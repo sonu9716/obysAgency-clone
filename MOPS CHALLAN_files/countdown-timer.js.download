@@ -1,0 +1,40 @@
+$(window).on('load',function(){
+			document.getElementById('countdown-number').innerHTML = "0"+5 + ":" + 00;
+			var fiveMin = 60 * 5; //five minutes is 300 seconds!
+			var countDown=setInterval(function () {
+			    //var d = new Date(); //get current time
+			    var seconds = 1; //convet current mm:ss to seconds for easier caculation, we don't care hours.
+			    fiveMin=fiveMin - seconds
+			    var timeleft = (fiveMin - seconds) % fiveMin; // let's say now is 01:30, then current seconds is 60+30 = 90. And 90%300 = 90, finally 300-90 = 210. That's the time left!
+               
+			    var minutFormat=parseInt(timeleft / 60);			    
+			    minutFormat = minutFormat < 10 ? '0'+minutFormat:minutFormat;
+			    
+			     var secondsFormat =timeleft % 60;
+			     secondsFormat=secondsFormat<10?'0'+secondsFormat:secondsFormat;
+			    
+				 
+			   var result = minutFormat + ':' + secondsFormat ; //formart seconds back into mm:ss 
+			   // var result = parseInt(timeleft / 60) + ':' + timeleft % 60; //formart seconds back into mm:ss 
+			    document.getElementById('countdown-number').innerHTML = result;
+			    
+			    if(timeleft%30 == 0)
+		    	{
+			    	checkDBUpdate();
+		    	}
+			    
+			    
+			    if(result=='00:00')
+			   	{
+			     submitFormpos();
+
+			   	}
+			}, 1000) ;
+			
+			
+			setTimeout(function(){
+				$('#countdown-number').hide();
+				$('#countdown-number1').show();
+				$('svg circle').css('animation','none')
+			},300000)	
+	})

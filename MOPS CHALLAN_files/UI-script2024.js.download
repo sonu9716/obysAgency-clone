@@ -1,0 +1,142 @@
+$(document).ready(function() {
+	/*import html files*/
+		inc.includeHTML();
+	/*import html files*/
+
+
+
+  //change colour when radio is selected
+  $('#radioDebtAcc input:radio').change(function() {
+    // Only remove the class in the specific box that contains the radio
+    $('.rDAbase.rDAhighLight').removeClass('rDAhighLight');
+    $(this).closest('.rDAbase').addClass('rDAhighLight');
+	if ($(window).width() < 640){
+		 $('.mobSelHL.content_highlight').removeClass('content_highlight');
+		$(".mobSelHL").parentsUntil("table", "td").css({"color": "#fff !important"});
+  } else {
+	  $('.rDAbase.rDAhighLight').removeClass('rDAhighLight');
+  }
+});
+
+
+
+/* Carousel */
+$('#carousel_SDA').on('slide.bs.carousel', function (e) {
+    /* CC 2.0 License Iatek LLC 2018 - Attribution required */
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 2;
+    var totalItems = $('.carousel-item').length;
+  console.log(totalItems);
+    if (idx >= totalItems-(itemsPerSlide-1)) {
+        var it = itemsPerSlide - (totalItems - idx);
+        for (var i=0; i<it; i++) {
+            // append slides to end
+            if (e.direction=="left") {
+                $('.carousel-item').eq(i).appendTo('.carousel-inner');
+            }
+            else {
+                $('.carousel-item').eq(0).appendTo('.carousel-inner');
+            }
+        }
+    }
+});
+/* Carousel */
+
+
+
+
+
+
+$("#generateOTPbtn").click(function() {
+			$("#passwordOTPCont").show();
+			$("#generateOTPBase").hide();
+	   }); 
+
+
+
+
+});
+
+
+$(document).ready(function() {
+	var circle =  $("#circle-1");
+	if(circle){
+		var prefs={
+			maxValue: 120,
+			triggerPercentage: true,
+			// the width of the dial
+			dialWidth: 3,
+			// font size
+			fontSize:"13px",
+			// the size of the circle
+			size:"50px"
+		};
+		Circlebar(prefs, circle);
+	}
+});
+
+
+
+$(document).ready(function() {
+
+$('#contCardRadioSel------  input:radio').change(function() {
+    // Only remove the class in the specific box that contains the radio
+    $('.contTbleCard .contTCBGColor').removeClass('contTCBGColor');
+	
+    $(this).closest('.contTbleCard').addClass('contTCBGColor');
+	
+	if ($(window).width() < 640){
+		 $('.mobSelHL.content_highlight').removeClass('content_highlight');
+		$(".mobSelHL").parentsUntil("table", "td").css({"color": "#fff !important"});
+
+  } else {
+	   $('.contTbleCard .contTCBGColor').removeClass('contTCBGColor');
+	   // $(this).closest('.rDAbase').removeClass('cotMobHighLgt');
+      //$('body').css("background-image":"url(images/background-desktop.svg)");
+  }
+});
+
+});
+
+
+
+$(document).ready(function() {
+	//Scroll Message
+	function loadScrollMsg(){
+		setTimeout(function(){
+			$.getJSON('../js/scroll_data.json',function(v){
+				if( v.scroll_message.scroll_value =='' || v.scroll_message.flag === 'false') {
+					$('#MOPS_msg p').hide();
+				} 
+				else {
+					$('#MOPS_msg p').html(v.scroll_message.scroll_description);	
+				}
+			});
+		},300);
+	}
+	//Scroll Message
+});
+
+//---------------- Footer Vertical Alignment ------------
+//
+function alignFooter() {
+      let $main = $('.headerMarginInnerfixed');
+      let $footer = $('#footer');
+      
+	  if($main && $footer){
+		  setTimeout(function() {
+				let fh = $footer.outerHeight();
+				let mt = $main.css('margin-top');
+					  mt = Number( mt.substring(0, mt.lastIndexOf('px')) );console.log(fh, mt)
+				$main.css( 'min-height', 'calc(100vh - ' + (fh+mt) + 'px)' );
+		  });
+	  }
+}
+
+$(document).ready(function() {
+      $(window).resize(function() {
+            alignFooter();
+      });
+      alignFooter();
+});
