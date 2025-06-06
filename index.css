@@ -719,14 +719,7 @@ border-bottom:0.5vw solid #ffffff00 ;
 #nav svg{
   scale: 1;
 }
- /* #nav svg:nth-child(1){
-  position: fixed;
-  left: 10%;
-}
-#nav svg:nth-child(2){
-  position: fixed;
-  right:-10%;
-}  */
+
 #nav-part2{
   
     display: none;
@@ -776,7 +769,7 @@ border-bottom:0.5vw solid #ffffff00 ;
  }
 
  #page2{
-  height: 60vh;
+  height: 47vh;
   width: 100%;
   padding-top: 0vh ;
   position: relative;
@@ -1041,7 +1034,7 @@ border-bottom:0.5vw solid #ffffff00 ;
   color: transparent;
 }
 #footer{
-   height: 30vh;
+   height: 25vh;
    width: 100%;
    /* background-color: red; */
    position: relative;
